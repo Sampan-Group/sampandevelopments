@@ -1,0 +1,140 @@
+/* app/globals.css */
+@import "tailwindcss";
+
+:root {
+  /* Luxury Green Background */
+  --background: #F0F5EF;
+  --foreground: #17251C;
+
+  /* Premium Green Surface Palette */
+  --surface: #E4EEE3;
+  --surface-elevated: #F8FBF7;
+  --border: #D3E2D1;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Sampan Brand Palette */
+  --color-primary: #19ABE1;
+  --color-secondary: #009D4E;
+  --color-accent: #1C87CC;
+
+  /* Brand Neutrals */
+  --color-brand-black: #17251C;
+  --color-brand-white: #F0F5EF;
+
+  /* Luxury Green Surfaces */
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-border: var(--border);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  overflow-x: clip;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Add to app/globals.css */
+
+/* Entrance Animations */
+@keyframes fade-up {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes mask-reveal {
+  0% { clip-path: inset(0 100% 0 0); }
+  100% { clip-path: inset(0 0 0 0); }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
+  opacity: 0;
+}
+.animate-mask-reveal {
+  animation: mask-reveal 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+/* Staggered delays */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+/* Architectural Grid Background */
+.blueprint-bg {
+  background-image: 
+    linear-gradient(rgba(27, 27, 27, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27, 27, 27, 0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up,
+  .animate-fade-in,
+  .animate-mask-reveal,
+  .content-reveal,
+  .animate-toast-progress {
+    animation: none !important;
+    opacity: 1 !important;
+    clip-path: none !important;
+    transform: none !important;
+  }
+
+  .progress-bar {
+    animation: none !important;
+    transform: scaleX(1) !important;
+  }
+}
+
+
+@keyframes toast-progress {
+  from {
+    width: 100%;
+  }
+
+  to {
+    width: 0%;
+  }
+}
+
+.animate-toast-progress {
+  animation: toast-progress 3s linear forwards;
+}
