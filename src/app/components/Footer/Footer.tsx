@@ -115,7 +115,7 @@ export default function Footer() {
         {/* D. Bottom Bar */}
         <div className="border-t border-[#292929] pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-xs text-[#A3A3A3] tracking-wide text-center md:text-left">
-            © {currentYear} Sampan Development Ltd. All rights reserved.
+            © {currentYear} Sampan Development Ltd. All rights reserved..
           </p>
 
           <div className="flex items-center gap-8">
