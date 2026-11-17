@@ -309,48 +309,16 @@ export default function AboutPage() {
     { num: "85", label: "Acres Under Development" },
   ];
 
-  const leaders = [
-    {
-      name: "Md. Emamul Hasan ",
-      role: "Chairman",
-      img: "/images/leader/Md._EMAMUL_HASAN.png",
-      shortRole: "Chairman",
-      office: "Sampan Group HQ",
-      bio: "Founder of Sampan Group with over 35 years in land development, hospitality, and trade. Leads the group's long-term vision with a commitment to documented ownership and trusted delivery across every concern.",
-    },
-    {
-      name: "Md. Emamul Hasan",
-      role: "Chief Executive Officer",
-      img: "/images/leader/Md._EMAMUL_HASAN.png",
-      shortRole: "CEO",
-      office: "Sampan Development Ltd",
-      bio: "Oversees day-to-day operations and project delivery across all ongoing developments.",
-    },
-    {
-      name: "Tanvir Ahmed",
-      role: "Managing Director",
-      img: "/images/leader/Tanvir_Ahmed.png",
-      shortRole: "MD",
-      office: "Sampan Development Ltd",
-      bio: "Manages land acquisition, partnerships, and strategic growth along the highway corridor.",
-    },
-    {
-      name: "Saifuddin Chowdhury",
-      role: "Director, Projects",
-      img: "/images/leader/Saifuddin_Chowdhury.png",
-      shortRole: "Director",
-      office: "Projects Division",
-      bio: "Leads construction, design, and handover for Metro Square, Condominium, and Trade Emporium.",
-    },
-    {
-      name: "Kamrul Islam",
-      role: "Head of Legal",
-      img: "/images/leader/Kamrul_Islam.png",
-      shortRole: "Legal",
-      office: "Legal & Compliance",
-      bio: "Ensures every plot, deed, and mutation paper is verified before any buyer makes a payment.",
-    },
-  ];
+  const leader = {
+    name: "Md. Emamul Hasan",
+    role: "Managing Director & CEO",
+    img: "/images/leader/Emamul_Hasan.png",
+    shortRole: "MD & CEO",
+    office: "Sampan Development Ltd",
+    bio: "Founder and Managing Director & CEO of Sampan Development Ltd. Leading the group's strategic vision and project execution with over 35 years of experience across real estate, hospitality, and trade. Committed to 100% verified ownership, architectural precision, and trusted delivery across every project.",
+    videoUrl: "https://www.youtube.com/embed/YjhMZwyZZ_Y?autoplay=1&rel=0",
+  };
+  const leaders = [leader];
 
   const whyItems = [
     { word: "Trust", desc: "Our projects are not only drawings. Sampan Highway Inn and Express Highway Inn are operating on the highway today, and you can drive there.", link: "/projects" },
@@ -766,7 +734,7 @@ export default function AboutPage() {
       </section>
 
       {/* ============================================================
-          4. LEADERSHIPFeatured Chairman + Editorial team grid
+          4. LEADERSHIPFeatured Managing Director & CEO + Video
           ============================================================ */}
       <section id="section-leadership" className="relative w-full overflow-hidden bg-[#F5F3EE] px-5 py-20 text-[#101615] sm:px-6 md:px-12 md:py-32 lg:px-24 lg:py-40">
         <div className="mx-auto max-w-[1400px]">
@@ -776,103 +744,102 @@ export default function AboutPage() {
               <span className="text-[10px] font-medium uppercase tracking-[0.4em] text-[#C5A059]">Leadership</span>
             </div>
             <h2 className="font-lux-serif text-[clamp(2.5rem,5vw,4rem)] leading-[1.05] tracking-[-0.02em] mb-8">
-              <span className="block overflow-hidden pb-2"><span className="anim-headline block font-light">The people accountable</span></span>
+              <span className="block overflow-hidden pb-2"><span className="anim-headline block font-light">The leadership accountable</span></span>
               <span className="block overflow-hidden pb-2"><span className="anim-headline block font-normal italic text-[#C5A059]">for your project.</span></span>
             </h2>
             <p className="anim-fade text-sm font-light leading-relaxed text-[#101615]/70 sm:text-base md:text-lg">
-              Our leaders sign off on every project, from land purchase to handover.
+              Our leadership signs off on every project, from land purchase to handover.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8" style={{ perspective: "1200px" }}>
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10" style={{ perspective: "1200px" }}>
 
-            {/* Featured Chairman */}
-            <div className="leader-card group relative lg:col-span-5 bg-white shadow-[0_12px_40px_-12px_rgba(16,22,21,0.15)] transition-shadow duration-500 hover:shadow-[0_24px_60px_-12px_rgba(197,160,89,0.3)]" style={{ transformStyle: "preserve-3d" }}>
-              <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#101615]/5">
-                <img
-                  src={leaders[0].img}
-                  alt={leaders[0].name}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-105"
-                />
+            {/* Featured Managing Director & CEO */}
+            <div className="leader-card group relative lg:col-span-6 flex flex-col justify-between bg-white shadow-[0_12px_40px_-12px_rgba(16,22,21,0.15)] transition-shadow duration-500 hover:shadow-[0_24px_60px_-12px_rgba(197,160,89,0.3)]" style={{ transformStyle: "preserve-3d" }}>
+              <div>
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#101615]/5">
+                  <img
+                    src={leader.img}
+                    alt={`${leader.name} - ${leader.role}`}
+                    loading="lazy"
+                    className="h-full w-full object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-105"
+                  />
 
-                <div className="absolute left-4 top-4 z-10 flex items-center gap-2 backdrop-blur-sm bg-white/60 px-2.5 py-1">
-                  <span className="h-px w-3 bg-[#C5A059]"></span>
-                  <span className="font-mono text-[10px] tracking-widest text-[#101615]/70">01</span>
-                </div>
-
-                <div className="absolute right-4 top-4 z-10 backdrop-blur-sm bg-[#C5A059] px-3 py-1.5">
-                  <span className="text-[9px] font-semibold uppercase tracking-[0.3em] text-white">Chairman</span>
-                </div>
-
-                <div className="absolute left-0 top-0 z-10 h-6 w-6 border-l border-t border-[#C5A059]/60"></div>
-                <div className="absolute right-0 top-0 z-10 h-6 w-6 border-r border-t border-[#C5A059]/60"></div>
-                <div className="absolute bottom-0 left-0 z-10 h-6 w-6 border-b border-l border-[#C5A059]/60"></div>
-                <div className="absolute right-0 bottom-0 z-10 h-6 w-6 border-r border-b border-[#C5A059]/60"></div>
-
-                <div className="absolute inset-0 bg-gradient-to-t from-[#101615]/85 via-[#101615]/30 to-transparent"></div>
-
-                <div className="absolute bottom-0 left-0 right-0 z-10 p-6">
-                  <span className="mb-2 block text-[9px] uppercase tracking-[0.3em] text-[#C5A059]">Chairman</span>
-                  <h3 className="font-lux-serif text-3xl font-light leading-tight text-white md:text-4xl">{leaders[0].name}</h3>
-                </div>
-              </div>
-
-              <div className="p-6 md:p-8">
-                <div className="mb-5 flex items-center justify-between border-b border-[#101615]/10 pb-4">
-                  <span className="text-[10px] uppercase tracking-[0.3em] text-[#101615]/50">Office</span>
-                  <span className="font-lux-serif text-sm italic text-[#C5A059]">{leaders[0].office}</span>
-                </div>
-                <p className="text-sm font-light leading-relaxed text-[#101615]/70">
-                  {leaders[0].bio}
-                </p>
-                <span className="mt-6 block h-px w-8 origin-left bg-[#C5A059] transition-all duration-500 group-hover:w-full"></span>
-              </div>
-            </div>
-
-            {/* Team grid */}
-            <div className="lg:col-span-7">
-              <div className="grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-2" style={{ perspective: "1000px" }}>
-
-                {leaders.slice(1).map((leader, i) => (
-                  <div
-                    key={i}
-                    className="leader-card group relative bg-white p-4 shadow-[0_8px_30px_-12px_rgba(16,22,21,0.12)] transition-shadow duration-500 hover:shadow-[0_20px_50px_-12px_rgba(197,160,89,0.25)] sm:p-5"
-                    style={{ transformStyle: "preserve-3d" }}
-                  >
-                    <span className="absolute right-3 top-3 font-mono text-[9px] tracking-widest text-[#101615]/30">
-                      0{i + 2}
-                    </span>
-
-                    <div className="relative mb-4 aspect-[4/5] w-full overflow-hidden border border-[#101615]/10 bg-[#101615]/5">
-                      <img
-                        src={leader.img}
-                        alt={leader.name}
-                        loading="lazy"
-                        className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-105"
-                      />
-
-                      <div className="absolute right-2 top-2 z-10 backdrop-blur-sm bg-[#101615]/60 px-2 py-0.5">
-                        <span className="text-[8px] uppercase tracking-[0.2em] text-[#C5A059]">{leader.shortRole}</span>
-                      </div>
-
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#101615]/70 via-transparent to-transparent"></div>
-
-                      <div className="absolute bottom-0 left-0 right-0 z-10 p-3">
-                        <h4 className="font-lux-serif text-base font-light leading-tight text-white sm:text-lg">{leader.name}</h4>
-                      </div>
-
-                      <div className="absolute left-0 top-0 z-10 h-4 w-4 border-l border-t border-[#C5A059]/50"></div>
-                      <div className="absolute bottom-0 right-0 z-10 h-4 w-4 border-b border-r border-[#C5A059]/50"></div>
-                    </div>
-
-                    <p className="mb-1 text-[10px] uppercase tracking-[0.2em] text-[#C5A059]">{leader.role}</p>
-                    <p className="mb-3 text-[11px] font-light leading-relaxed text-[#101615]/60">{leader.bio}</p>
-                    <span className="block h-px w-6 origin-left scale-x-100 bg-[#C5A059] transition-transform duration-500 group-hover:w-full"></span>
+                  <div className="absolute left-4 top-4 z-10 flex items-center gap-2 backdrop-blur-sm bg-white/70 px-2.5 py-1">
+                    <span className="h-px w-3 bg-[#C5A059]"></span>
+                    <span className="font-mono text-[10px] tracking-widest text-[#101615]/80 font-medium">01</span>
                   </div>
-                ))}
+
+                  <div className="absolute right-4 top-4 z-10 backdrop-blur-sm bg-[#C5A059] px-3 py-1.5 shadow-sm">
+                    <span className="text-[9px] font-semibold uppercase tracking-[0.25em] text-white">MD &amp; CEO</span>
+                  </div>
+
+                  <div className="absolute left-0 top-0 z-10 h-6 w-6 border-l border-t border-[#C5A059]/60"></div>
+                  <div className="absolute right-0 top-0 z-10 h-6 w-6 border-r border-t border-[#C5A059]/60"></div>
+                  <div className="absolute bottom-0 left-0 z-10 h-6 w-6 border-b border-l border-[#C5A059]/60"></div>
+                  <div className="absolute right-0 bottom-0 z-10 h-6 w-6 border-r border-b border-[#C5A059]/60"></div>
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#101615]/85 via-[#101615]/25 to-transparent"></div>
+
+                  <div className="absolute bottom-0 left-0 right-0 z-10 p-6 md:p-8">
+                    <span className="mb-2 block text-[9px] uppercase tracking-[0.3em] text-[#C5A059]">Managing Director &amp; CEO</span>
+                    <h3 className="font-lux-serif text-2xl font-light leading-tight text-white sm:text-3xl md:text-4xl">{leader.name}</h3>
+                  </div>
+                </div>
+
+                <div className="p-6 md:p-8">
+                  <div className="mb-5 flex items-center justify-between border-b border-[#101615]/10 pb-4">
+                    <span className="text-[10px] uppercase tracking-[0.3em] text-[#101615]/50">Designation</span>
+                    <span className="font-lux-serif text-sm italic text-[#C5A059]">Managing Director &amp; CEO</span>
+                  </div>
+                  <p className="text-sm font-light leading-relaxed text-[#101615]/75">
+                    {leader.bio}
+                  </p>
+                </div>
+              </div>
+
+              <div className="px-6 pb-6 md:px-8 md:pb-8">
+                <span className="block h-px w-8 origin-left bg-[#C5A059] transition-all duration-500 group-hover:w-full"></span>
               </div>
             </div>
+
+            {/* Video Right of It */}
+            <div className="group relative lg:col-span-6 flex flex-col justify-between bg-white shadow-[0_12px_40px_-12px_rgba(16,22,21,0.15)] transition-shadow duration-500 hover:shadow-[0_24px_60px_-12px_rgba(197,160,89,0.3)]">
+              <div>
+                <div className="relative aspect-video w-full overflow-hidden bg-black">
+                  <iframe
+                    src={leader.videoUrl}
+                    title="Md. Emamul Hasan | Managing Director &amp; CEO | Sampan Group"
+                    className="h-full w-full border-0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  />
+
+                  <div className="pointer-events-none absolute left-0 top-0 z-10 h-6 w-6 border-l border-t border-[#C5A059]/60"></div>
+                  <div className="pointer-events-none absolute right-0 top-0 z-10 h-6 w-6 border-r border-t border-[#C5A059]/60"></div>
+                  <div className="pointer-events-none absolute bottom-0 left-0 z-10 h-6 w-6 border-b border-l border-[#C5A059]/60"></div>
+                  <div className="pointer-events-none absolute right-0 bottom-0 z-10 h-6 w-6 border-r border-b border-[#C5A059]/60"></div>
+                </div>
+
+                <div className="p-6 md:p-8">
+                  <div className="mb-5 flex items-center justify-between border-b border-[#101615]/10 pb-4">
+                    <span className="text-[10px] uppercase tracking-[0.3em] text-[#101615]/50">Executive Address</span>
+                    <span className="font-lux-serif text-sm italic text-[#C5A059]">Leadership Message</span>
+                  </div>
+                  <h4 className="font-lux-serif text-xl font-light text-[#101615] mb-3 sm:text-2xl">
+                    Vision, Integrity &amp; Timely Delivery
+                  </h4>
+                  <p className="text-sm font-light leading-relaxed text-[#101615]/75">
+                    Watch Managing Director &amp; CEO Md. Emamul Hasan discuss Sampan Group&apos;s guiding philosophy—prioritizing legal transparency, structural excellence, and long-term security for every client and community.
+                  </p>
+                </div>
+              </div>
+
+              <div className="px-6 pb-6 md:px-8 md:pb-8">
+                <span className="block h-px w-8 origin-left bg-[#C5A059] transition-all duration-500 group-hover:w-full"></span>
+              </div>
+            </div>
+
           </div>
 
           {/* Editorial quote */}
@@ -881,7 +848,7 @@ export default function AboutPage() {
             <p className="font-lux-serif text-2xl font-light italic leading-tight text-[#101615] md:text-3xl lg:text-4xl">
               We never ask a buyer to trust us on words alone.
             </p>
-            <p className="mt-6 text-[10px] uppercase tracking-[0.3em] text-[#101615]/50">Rakibul Hasan · CEO, Sampan Development Ltd</p>
+            <p className="mt-6 text-[10px] uppercase tracking-[0.3em] text-[#101615]/50">Md. Emamul Hasan · Managing Director &amp; CEO, Sampan Development Ltd</p>
           </div>
         </div>
       </section>
