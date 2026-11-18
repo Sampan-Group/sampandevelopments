@@ -734,11 +734,11 @@ export default function AboutPage() {
       </section>
 
       {/* ============================================================
-          4. LEADERSHIPFeatured Managing Director & CEO + Video
+          4. LEADERSHIPFeatured Managing Director & CEO
           ============================================================ */}
       <section id="section-leadership" className="relative w-full overflow-hidden bg-[#F5F3EE] px-5 py-20 text-[#101615] sm:px-6 md:px-12 md:py-32 lg:px-24 lg:py-40">
         <div className="mx-auto max-w-[1400px]">
-          <div className="mb-16 max-w-xl">
+          <div className="mx-auto mb-12 max-w-2xl md:mb-16">
             <div className="anim-fade mb-8 flex items-center gap-4">
               <span className="anim-line-draw block h-[1.5px] w-12 bg-[#C5A059]"></span>
               <span className="text-[10px] font-medium uppercase tracking-[0.4em] text-[#C5A059]">Leadership</span>
@@ -752,10 +752,10 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10" style={{ perspective: "1200px" }}>
+          <div className="mx-auto grid max-w-2xl grid-cols-1" style={{ perspective: "1200px" }}>
 
             {/* Featured Managing Director & CEO */}
-            <div className="leader-card group relative lg:col-span-6 flex flex-col justify-between bg-white shadow-[0_12px_40px_-12px_rgba(16,22,21,0.15)] transition-shadow duration-500 hover:shadow-[0_24px_60px_-12px_rgba(197,160,89,0.3)]" style={{ transformStyle: "preserve-3d" }}>
+            <div className="leader-card group relative flex flex-col justify-between bg-white shadow-[0_12px_40px_-12px_rgba(16,22,21,0.15)] transition-shadow duration-500 hover:shadow-[0_24px_60px_-12px_rgba(197,160,89,0.3)]" style={{ transformStyle: "preserve-3d" }}>
               <div>
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#101615]/5">
                   <img
@@ -803,7 +803,7 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Video Right of It */}
+            {/* Leadership video temporarily disabled. Keep the complete card for easy restoration.
             <div className="group relative lg:col-span-6 flex flex-col justify-between bg-white shadow-[0_12px_40px_-12px_rgba(16,22,21,0.15)] transition-shadow duration-500 hover:shadow-[0_24px_60px_-12px_rgba(197,160,89,0.3)]">
               <div>
                 <div className="relative aspect-video w-full overflow-hidden bg-black">
@@ -840,6 +840,7 @@ export default function AboutPage() {
               </div>
             </div>
 
+            */}
           </div>
 
           {/* Editorial quote */}
