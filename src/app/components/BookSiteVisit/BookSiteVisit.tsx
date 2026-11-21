@@ -4,6 +4,7 @@
 import { useLayoutEffect, useRef, useState, FormEvent } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { submitContact } from "../../lib/submit-contact";
 
 type FormState = {
   name: string;
@@ -34,6 +35,8 @@ export default function BookSiteVisit() {
   const sectionRef = useRef<HTMLElement>(null);
   const [form, setForm] = useState<FormState>(EMPTY);
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
 
   useLayoutEffect(() => {
@@ -129,15 +132,25 @@ export default function BookSiteVisit() {
     return Object.keys(next).length === 0;
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!validate()) return;
-    setSubmitted(true);
+    if (sending || !validate()) return;
+    setSending(true);
+    setSubmitError("");
+    try {
+      await submitContact("site-visit", form);
+      setSubmitted(true);
+    } catch (error) {
+      setSubmitError(error instanceof Error && error.name !== "TimeoutError" ? error.message : "Unable to send your request. Please try again or email info@sampangroup.com.bd.");
+    } finally {
+      setSending(false);
+    }
   };
 
   const resetForm = () => {
     setForm(EMPTY);
     setErrors({});
+    setSubmitError("");
     setSubmitted(false);
   };
 
@@ -359,14 +372,16 @@ export default function BookSiteVisit() {
                   </div>
 
                   {/* Submit */}
+                  {submitError && <p role="alert" className="mt-6 text-sm text-red-400">{submitError}</p>}
                   <div className="mt-10 md:mt-12">
                     <button
                       type="submit"
+                      disabled={sending}
                       className="group relative inline-flex w-full items-center justify-center gap-3 overflow-hidden bg-[#009D4E] px-8 py-5 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.3em] text-[#101615] transition-colors duration-500 hover:text-[#009D4E] sm:w-auto"
                     >
                       <span className="absolute inset-0 z-0 translate-y-full bg-[#F5F3EE] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0"></span>
                       <span className="relative z-10 flex items-center gap-3">
-                        Confirm Request
+                        {sending ? "Sending..." : "Confirm Request"}
                         <svg className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                         </svg>

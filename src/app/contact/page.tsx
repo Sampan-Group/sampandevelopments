@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import * as THREE from "three";
+import { submitContact } from "../lib/submit-contact";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 
 // --- Font Optimization ---
@@ -38,7 +39,6 @@ const CONFIG = {
   investmentLink: "/investment",
   downloadsLink: "/downloads",
   groupLink: "/sampan-group",
-  apiEndpoint: "/api/contact"
 };
 
 const PROJECTS = [
@@ -768,6 +768,7 @@ function ChannelIcon({ name }: { name: string }) {
 // ==========================================
 function EnquiryForm() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [error, setError] = useState("");
   const [isNRB, setIsNRB] = useState(false);
   const [formData, setFormData] = useState({ name: "", phone: "", email: "", project: "", interest: "", message: "", consent: false });
 
@@ -780,13 +781,20 @@ function EnquiryForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (status === 'loading') return;
     if (!formData.phone || !formData.consent) {
+      setError("Enter a phone number and agree to be contacted.");
       setStatus('error');
       return;
     }
     setStatus('loading');
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setStatus('success');
+    try {
+      await submitContact("enquiry", { ...formData, abroad: isNRB });
+      setStatus('success');
+    } catch (error) {
+      setError(error instanceof Error && error.name !== "TimeoutError" ? error.message : "Unable to send your request. Please try again or email info@sampangroup.com.bd.");
+      setStatus('error');
+    }
   };
 
   if (status === 'success') {
@@ -865,7 +873,7 @@ function EnquiryForm() {
         </label>
       </div>
 
-      {status === 'error' && <p className="text-xs text-red-600">Enter a phone number we can reach on WhatsApp and ensure consent is checked.</p>}
+      {status === 'error' && <p role="alert" className="text-xs text-red-600">{error}</p>}
 
       <button
         type="submit"
@@ -891,6 +899,7 @@ function EnquiryForm() {
 // ==========================================
 function BookingForm() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [error, setError] = useState("");
   const [formData, setFormData] = useState({ name: "", phone: "", project: "", visitors: "1", date: "", time: "Morning", pickup: "No" });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -899,13 +908,20 @@ function BookingForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (status === 'loading') return;
     if (!formData.name || !formData.phone || !formData.date) {
+      setError("Please fill in all required fields correctly.");
       setStatus('error');
       return;
     }
     setStatus('loading');
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setStatus('success');
+    try {
+      await submitContact("booking", formData);
+      setStatus('success');
+    } catch (error) {
+      setError(error instanceof Error && error.name !== "TimeoutError" ? error.message : "Unable to send your request. Please try again or email info@sampangroup.com.bd.");
+      setStatus('error');
+    }
   };
 
   if (status === 'success') {
@@ -972,7 +988,7 @@ function BookingForm() {
         </div>
       </div>
 
-      {status === 'error' && <p className="text-xs text-red-400">Please fill in all required fields correctly.</p>}
+      {status === 'error' && <p role="alert" className="text-xs text-red-400">{error}</p>}
 
       <button
         type="submit"

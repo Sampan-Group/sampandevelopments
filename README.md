@@ -345,7 +345,7 @@ Premium 404 page:
 1. Push your repository to GitHub
 2. Go to [vercel.com](https://vercel.com) and import the repo
 3. Framework preset: **Next.js** (auto-detected)
-4. No environment variables required for basic deployment
+4. Configure SMTP environment variables for form delivery (see below)
 5. Deploy
 
 ```bash
@@ -353,6 +353,27 @@ Premium 404 page:
 npm i -g vercel
 vercel
 ```
+
+### Form email delivery
+
+All three forms (homepage site visit, contact enquiry, and contact booking) send
+to **info@sampangroup.com.bd** through `/api/contact`. Success is displayed only
+after the SMTP server accepts the message. Failed submissions keep the entered
+details available for retry.
+
+Copy `.env.example` to `.env.local` for local use, or set its variables in your
+hosting provider's environment settings: `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`,
+`SMTP_PASS`, and `SMTP_FROM`. The example uses `lemon-yellow.colorbytes.net`,
+port 465, and `info@sampangroup.com.bd` as supplied for this site; confirm these
+values with your email provider and fill in the mailbox password securely.
+Use port 465 for implicit TLS or port 587 for STARTTLS. `SMTP_FROM` must be a plain
+email address authorized by that provider. The visitor's optional email becomes
+Reply-To; the recipient is fixed on the server. Restart or redeploy after setting
+these values. Keep credentials out of source control.
+
+For a delivery check, submit each form with identifiable test details and confirm
+that each message reaches the inbox (also check spam). A local test without SMTP
+configuration returns an error instead of reporting a successful submission.
 
 ### Self-Hosted
 
